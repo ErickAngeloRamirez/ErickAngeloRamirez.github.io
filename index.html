@@ -12,68 +12,64 @@
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         min-height: 100vh;
-      }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
       }
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      .loading {
+        max-width: 600px;
       }
-      p {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-        line-height: 1.6;
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid white;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
       }
-      .card {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 30px;
-        border-radius: 15px;
-        backdrop-filter: blur(10px);
-        margin: 20px 0;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      }
-      .social-links {
-        margin-top: 30px;
-      }
-      .social-links a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-size: 1.1rem;
-        transition: color 0.3s ease;
-      }
-      .social-links a:hover {
-        color: #ffd700;
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="card">
-        <h1>Hello World! 👋</h1>
-        <p>Welcome to my personal website!</p>
-        <p>
-          I'm Erick Angelo Ramirez, and this site is hosted with GitHub Pages.
-        </p>
-        <p>🚀 This is a simple but beautiful landing page to get started.</p>
-      </div>
-
-      <div class="card">
-        <h2>About Me</h2>
-        <p>I'm passionate about technology and web development.</p>
-        <p>This is just the beginning - more content coming soon!</p>
-      </div>
-
-      <div class="social-links">
-        <a href="https://github.com/ErickAngeloRamirez" target="_blank"
-          >GitHub</a
-        >
-        <a href="mailto:your-email@example.com">Contact</a>
-      </div>
+    <div class="loading">
+      <h1>Loading Portfolio...</h1>
+      <div class="spinner"></div>
+      <p>
+        If you're seeing this message, the React app is being built or deployed.
+      </p>
+      <p>Please check back in a few minutes.</p>
     </div>
+
+    <script>
+      // Check if the React app is available
+      fetch("./out/index.html")
+        .then((response) => {
+          if (response.ok) {
+            window.location.href = "./out/";
+          }
+        })
+        .catch(() => {
+          // If React app is not available, show a message
+          document.querySelector(".loading").innerHTML = `
+                    <h1>Portfolio Coming Soon!</h1>
+                    <p>This is a React/Next.js application that needs to be built and deployed.</p>
+                    <p>To deploy:</p>
+                    <ol style="text-align: left; max-width: 400px; margin: 20px auto;">
+                        <li>Install dependencies: <code>npm install</code></li>
+                        <li>Build the app: <code>npm run build</code></li>
+                        <li>Deploy to GitHub Pages</li>
+                    </ol>
+                `;
+        });
+    </script>
   </body>
 </html>
