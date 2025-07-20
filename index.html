@@ -1,75 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Erick Angelo Ramirez - Portfolio</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        margin: 0;
-        padding: 20px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-      .loading {
-        max-width: 600px;
-      }
-      .spinner {
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top: 4px solid white;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-        margin: 20px auto;
-      }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-  </head>
+<html>
   <body>
-    <div class="loading">
-      <h1>Loading Portfolio...</h1>
-      <div class="spinner"></div>
-      <p>
-        If you're seeing this message, the React app is being built or deployed.
-      </p>
-      <p>Please check back in a few minutes.</p>
-    </div>
-
-    <script>
-      // Check if the React app is available
-      fetch("./out/index.html")
-        .then((response) => {
-          if (response.ok) {
-            window.location.href = "./out/";
-          }
-        })
-        .catch(() => {
-          // If React app is not available, show a message
-          document.querySelector(".loading").innerHTML = `
-                    <h1>Portfolio Coming Soon!</h1>
-                    <p>This is a React/Next.js application that needs to be built and deployed.</p>
-                    <p>To deploy:</p>
-                    <ol style="text-align: left; max-width: 400px; margin: 20px auto;">
-                        <li>Install dependencies: <code>npm install</code></li>
-                        <li>Build the app: <code>npm run build</code></li>
-                        <li>Deploy to GitHub Pages</li>
-                    </ol>
-                `;
-        });
-    </script>
+    <h1>Hello World</h1>
+    <p>I'm hosted with GitHub Pages.</p>
   </body>
 </html>
